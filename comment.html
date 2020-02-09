@@ -29,36 +29,58 @@
 </style>
 </head>
 <body>
-<div id="lv-container" class="container" data-id="city" data-uid="MTAyMC80ODU1NC8yNTA0OA==">
-	<script type="text/javascript">
-	if (window["context"] == undefined) {
-        if (!window.location.origin) {
-            window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
-        }
-        window["context"] = location.origin+"/V6.0";
-    }
-	var refer = location.origin+location.pathname+"?pkg="+getQueryString("pkg");
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
+<div class="container">
+	<div>
+		<p id="hint-text"></p>
+		<script type="text/javascript">
+			var hintText = [
+				'违规内容举报：<a href="mailto:zbx1425@outlook.com">zbx1425@outlook.com</a><br>虽然这个评论插件列出了一堆社交媒体供登录，但是不少都不能用。若您无法登录，还请注册使用列在第一位的"来必力"账号。',
+				'違規內容舉報：<a href="mailto:zbx1425@outlook.com">zbx1425@outlook.com</a><br>雖然這個評論挿件列出了大量社交媒體供登入，但是许多都不可用。若您無法登入，還請註冊使用列在第一位的“來必力”帳號。',
+				'Report: <a href="mailto:zbx1425@outlook.com">zbx1425@outlook.com</a><br>Although there are quite a few social media account login buttons, many of them are not working. In case you are not able to sign in, please register and use a "LiveRe" account, located at the first place.'];
+			var lang_flag;
+			var lang = navigator.language || navigator.userLanguage;
+			lang = lang.toLowerCase();
+			if (lang.substr(0, 5) == 'zh-cn') {
+				lang_flag = 0;
+			} else if (lang.substr(0, 2) == 'zh') {
+				lang_flag = 1;
+			} else {
+				lang_flag = 2;
+			}
+			document.getElementById("hint-text").innerHTML = hintText[lang_flag];
+		</script>
+	</div>
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80ODU1NC8yNTA0OA==">
+		<script type="text/javascript">
+		if (window["context"] == undefined) {
+			if (!window.location.origin) {
+				window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+			}
+			window["context"] = location.origin+"/V6.0";
+		}
+		var refer = location.origin+location.pathname+"?pkg="+getQueryString("pkg");
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
 
-       if (typeof LivereTower === 'function') { return; }
+		   if (typeof LivereTower === 'function') { return; }
 
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
 
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-   function getQueryString(name) {
-        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) {
-            return unescape(r[2]);
-        }
-        return "nopkg";
-	}
-	</script>
-<noscript> 为正常使用评论功能请激活JavaScript</noscript>
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+	   function getQueryString(name) {
+			var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) {
+				return unescape(r[2]);
+			}
+			return "nopkg";
+		}
+		</script>
+	<noscript> 为正常使用评论功能请激活JavaScript</noscript>
+	</div>
 </div>
 </body>
 </html>
